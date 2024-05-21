@@ -2,10 +2,11 @@ const searchButton = document.querySelector(".search-btn");
 const cityInput = document.querySelector(".city-input");
 const ApiKey = "8f6200216e7a219e044fb1179fea87b6";
 const WeatherCardsDiv = document.querySelector(".weather-cards");
+const currentWeatherDiv = document.querySelector(".current-weather");
 
 searchButton.addEventListener("click", getCityCoordinates);
 
-const createWeatherCard = (weatherItem) => {
+const createWeatherCard = (cityName, weatherItem,index) => {
   return `
             <li class="card">
               <h3>${weatherItem.dt_txt.split(" ")[0]}</h3>
@@ -45,12 +46,20 @@ const getWeatherDetails = async (cityName, lat, lon) => {
   });
   cityInput.value = "";
   WeatherCardsDiv.innerHTML = "";
+  currentWeatherDiv.innerHTML = "";
 
   //   console.log(fiveDaysForecast);
-  fiveDaysForecast.forEach((weatherItem) => {
-    WeatherCardsDiv.insertAdjacentHTML(
-      "beforeend",
-      createWeatherCard(weatherItem)
-    );
+  fiveDaysForecast.forEach((weatherItem, index) => {
+    if (index === 0) {
+      currentWeatherDiv.insertAdjacentHTML(
+        "beforeend",
+        createWeatherCard(cityName, weatherItem, index)
+      );
+    } else {
+      WeatherCardsDiv.insertAdjacentHTML(
+        "beforeend",
+        createWeatherCard(cityName, weatherItem, index)
+      );
+    }
   });
 };
