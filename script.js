@@ -6,18 +6,30 @@ const currentWeatherDiv = document.querySelector(".current-weather");
 
 searchButton.addEventListener("click", getCityCoordinates);
 
-const createWeatherCard = (cityName, weatherItem,index) => {
-  return `
-            <li class="card">
-              <h3>${weatherItem.dt_txt.split(" ")[0]}</h3>
-              <img src="https://openweathermap.org/img/wn/${
-                weatherItem.weather[0].icon
-              }@2x.png" alt="" />
-              <h6>Temp: ${weatherItem.main.temp - (273.15).toFixed(2)}°C</h6>
-              <h6>Wind: ${weatherItem.wind.speed}</h6>
-              <h6>Humidity: ${weatherItem.main.humidity}</h6>
-            </li>
-            `;
+const createWeatherCard = (cityName, weatherItem, index) => {
+  if (index === 0) {
+    return `<li class="card">
+    <h3>${cityName} (${weatherItem.dt_txt.split(" ")[0]})</h3>
+    <img src="https://openweathermap.org/img/wn/${
+      weatherItem.weather[0].icon
+    }@2x.png" alt="" />
+    <h6>Temp: ${weatherItem.main.temp - (273.15).toFixed(2)}°C</h6>
+    <h6>Wind: ${weatherItem.wind.speed}</h6>
+    <h6>Humidity: ${weatherItem.main.humidity}</h6>
+  </li>`;
+  } else {
+    return `
+    <li class="card">
+      <h3>${weatherItem.dt_txt.split(" ")[0]}</h3>
+      <img src="https://openweathermap.org/img/wn/${
+        weatherItem.weather[0].icon
+      }@2x.png" alt="" />
+      <h6>Temp: ${weatherItem.main.temp - (273.15).toFixed(2)}°C</h6>
+      <h6>Wind: ${weatherItem.wind.speed}</h6>
+      <h6>Humidity: ${weatherItem.main.humidity}</h6>
+    </li>
+    `;
+  }
 };
 
 async function getCityCoordinates() {
