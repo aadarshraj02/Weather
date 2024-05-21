@@ -18,8 +18,15 @@ async function getCityCoordinates() {
 }
 
 const getWeatherDetails = async (cityName, lat, lon) => {
+  const uniqueForecastDays = [];
   const Weather_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ApiKey}`;
   const response = await fetch(Weather_API_URL);
   const data = await response.json();
-  console.log(data);
+  const fiveDaysForecast = data.list.filter((forecast) => {
+    const forecastDate = new Date(forecast.dt_txt).getDate();
+    if (!uniqueForecastDays.includes(forecastDate)) {
+      return uniqueForecastDays.push(forecastDate);
+    }
+  });
+  console.log(fiveDaysForecast);
 };
