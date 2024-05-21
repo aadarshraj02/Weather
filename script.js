@@ -3,8 +3,10 @@ const cityInput = document.querySelector(".city-input");
 const ApiKey = "8f6200216e7a219e044fb1179fea87b6";
 const WeatherCardsDiv = document.querySelector(".weather-cards");
 const currentWeatherDiv = document.querySelector(".current-weather");
+const locationButton = document.querySelector(".location-btn");
 
 searchButton.addEventListener("click", getCityCoordinates);
+locationButton.addEventListener("click", getUserCoordinates);
 
 const createWeatherCard = (cityName, weatherItem, index) => {
   if (index === 0) {
@@ -76,4 +78,7 @@ const getWeatherDetails = async (cityName, lat, lon) => {
       );
     }
   });
+};
+const getUserCoordinates = () => {
+  navigator.geolocation.getCurrentPosition();
 };
