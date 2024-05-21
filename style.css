@@ -18,3 +18,12 @@ h1 {
   padding: 30px;
   gap: 35px;
 }
+.weather-input {
+  width: 550px;
+}
+.weather-input input {
+  width: 100%;
+  height: 46px;
+  border: none;
+  outline: none;
+}
