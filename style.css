@@ -48,3 +48,9 @@ h1 {
 .weather-input .location-btn {
   background-color: rgb(120, 97, 136);
 }
+.weather-input .separator {
+  height: 1px;
+  width: 100%;
+  background-color: black;
+  margin: 25px 0;
+}
