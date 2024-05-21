@@ -6,3 +6,10 @@
 body {
   background-color: #78d3efc1;
 }
+h1 {
+  font-size: 1.8rem;
+  padding: 18px 0;
+  text-align: center;
+  color: #fff;
+  background-color: indigo;
+}
