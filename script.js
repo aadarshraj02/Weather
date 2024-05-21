@@ -43,6 +43,9 @@ const getWeatherDetails = async (cityName, lat, lon) => {
       return uniqueForecastDays.push(forecastDate);
     }
   });
+  cityInput.value = "";
+  WeatherCardsDiv.innerHTML = "";
+
   //   console.log(fiveDaysForecast);
   fiveDaysForecast.forEach((weatherItem) => {
     WeatherCardsDiv.insertAdjacentHTML(
