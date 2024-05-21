@@ -6,7 +6,6 @@ const currentWeatherDiv = document.querySelector(".current-weather");
 const locationButton = document.querySelector(".location-btn");
 
 searchButton.addEventListener("click", getCityCoordinates);
-locationButton.addEventListener("click", getUserCoordinates);
 
 const createWeatherCard = (cityName, weatherItem, index) => {
   if (index === 0) {
@@ -80,5 +79,15 @@ const getWeatherDetails = async (cityName, lat, lon) => {
   });
 };
 const getUserCoordinates = () => {
-  navigator.geolocation.getCurrentPosition();
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      console.log(position);
+    },
+    (error) => {
+      if (error.code === error.PERMISSION_DENIED) {
+        alert("Permission Denied");
+      }
+    }
+  );
 };
+locationButton.addEventListener("click", getUserCoordinates);
