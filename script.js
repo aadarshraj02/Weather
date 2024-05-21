@@ -8,15 +8,17 @@ searchButton.addEventListener("click", getCityCoordinates);
 
 const createWeatherCard = (cityName, weatherItem, index) => {
   if (index === 0) {
-    return `<li class="card">
+    return `<div class="details">
     <h3>${cityName} (${weatherItem.dt_txt.split(" ")[0]})</h3>
-    <img src="https://openweathermap.org/img/wn/${
-      weatherItem.weather[0].icon
-    }@2x.png" alt="" />
     <h6>Temp: ${weatherItem.main.temp - (273.15).toFixed(2)}°C</h6>
     <h6>Wind: ${weatherItem.wind.speed}</h6>
     <h6>Humidity: ${weatherItem.main.humidity}</h6>
-  </li>`;
+    <div class= icon">
+    <img src="https://openweathermap.org/img/wn/${
+      weatherItem.weather[0].icon
+    }@2x.png" alt="" />
+    <h6>${weatherItem.weather[0].description}</h6>
+  </div>`;
   } else {
     return `
     <li class="card">
