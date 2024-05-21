@@ -26,4 +26,11 @@ h1 {
   height: 46px;
   border: none;
   outline: none;
+  padding: 0 15px;
+  font-size: 1.05rem;
+  border-radius: 4px;
+  margin: 10px 0 20px 0;
+}
+.weather-data {
+  width: 100%;
 }
