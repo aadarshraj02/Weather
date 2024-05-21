@@ -82,3 +82,7 @@ h1 {
   font-size: 1.5rem;
   margin: 20px 0;
 }
+.weather-cards {
+  display: flex;
+  gap: 20px;
+}
