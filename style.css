@@ -45,3 +45,6 @@ h1 {
   border-radius: 5px;
   font-size: 1rem;
 }
+.weather-input .location-btn {
+  background-color: rgb(120, 97, 136);
+}
