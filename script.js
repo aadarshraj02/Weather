@@ -13,5 +13,13 @@ async function getCityCoordinates() {
   const API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${ApiKey}`;
   const response = await fetch(API_URL);
   const data = await response.json();
-  console.log(data);
+  const { name, lat, lon } = data[0];
+  getWeatherDetails(name, lat, lon);
 }
+
+const getWeatherDetails = async (cityName, lat, lon) => {
+  const Weather_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ApiKey}`;
+  const response = await fetch(Weather_API_URL);
+  const data = await response.json();
+  console.log(data);
+};
