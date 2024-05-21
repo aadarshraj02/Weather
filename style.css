@@ -34,3 +34,14 @@ h1 {
 .weather-data {
   width: 100%;
 }
+.weather-input button {
+  width: 100%;
+  padding: 10px 0;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: #fff;
+  background-color: indigo;
+  border-radius: 5px;
+  font-size: 1rem;
+}
