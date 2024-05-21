@@ -81,7 +81,14 @@ const getWeatherDetails = async (cityName, lat, lon) => {
 const getUserCoordinates = () => {
   navigator.geolocation.getCurrentPosition(
     (position) => {
-      console.log(position);
+      const { latitude, longitude } = position.coords;
+      const API_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${ApiKey}`;
+      fetch(API_URL)
+        .then((res) => res.json())
+        .then((data) => {
+          const { name } = data[0];
+          getWeatherDetails(name, latitude, longitude);
+        });
     },
     (error) => {
       if (error.code === error.PERMISSION_DENIED) {
