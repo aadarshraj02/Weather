@@ -1,6 +1,7 @@
 const searchButton = document.querySelector(".search-btn");
 const cityInput = document.querySelector(".city-input");
 const ApiKey = "8f6200216e7a219e044fb1179fea87b6";
+const WeatherCardsDiv = document.querySelector(".weather-cards");
 
 searchButton.addEventListener("click", getCityCoordinates);
 
@@ -10,7 +11,7 @@ const createWeatherCard = (weatherItem) => {
               <h3>${weatherItem.dt_txt.split(" ")[0]}</h3>
               <img src="https://openweathermap.org/img/wn/${
                 weatherItem.weather[0].icon
-              }@4x.png" alt="" />
+              }@2x.png" alt="" />
               <h6>Temp: ${weatherItem.main.temp - (273.15).toFixed(2)}°C</h6>
               <h6>Wind: ${weatherItem.wind.speed}</h6>
               <h6>Humidity: ${weatherItem.main.humidity}</h6>
@@ -44,6 +45,9 @@ const getWeatherDetails = async (cityName, lat, lon) => {
   });
   //   console.log(fiveDaysForecast);
   fiveDaysForecast.forEach((weatherItem) => {
-    createWeatherCard(weatherItem);
+    WeatherCardsDiv.insertAdjacentHTML(
+      "beforeend",
+      createWeatherCard(weatherItem)
+    );
   });
 };
