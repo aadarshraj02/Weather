@@ -13,3 +13,8 @@ h1 {
   color: #fff;
   background-color: indigo;
 }
+.container {
+  display: flex;
+  padding: 30px;
+  gap: 35px;
+}
