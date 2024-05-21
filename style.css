@@ -54,3 +54,11 @@ h1 {
   background-color: black;
   margin: 25px 0;
 }
+.current-weather {
+  background-color: indigo;
+  color: #fff;
+  padding: 20px 70px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
