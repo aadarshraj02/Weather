@@ -4,6 +4,20 @@ const ApiKey = "8f6200216e7a219e044fb1179fea87b6";
 
 searchButton.addEventListener("click", getCityCoordinates);
 
+const createWeatherCard = (weatherItem) => {
+  return `
+            <li class="card">
+              <h3>${weatherItem.dt_txt.split(" ")[0]}</h3>
+              <img src="https://openweathermap.org/img/wn/${
+                weatherItem.weather[0].icon
+              }@4x.png" alt="" />
+              <h6>Temp: ${weatherItem.main.temp - (273.15).toFixed(2)}°C</h6>
+              <h6>Wind: ${weatherItem.wind.speed}</h6>
+              <h6>Humidity: ${weatherItem.main.humidity}</h6>
+            </li>
+            `;
+};
+
 async function getCityCoordinates() {
   const cityName = cityInput.value.trim();
   if (!cityName) {
@@ -28,5 +42,8 @@ const getWeatherDetails = async (cityName, lat, lon) => {
       return uniqueForecastDays.push(forecastDate);
     }
   });
-  console.log(fiveDaysForecast);
+  //   console.log(fiveDaysForecast);
+  fiveDaysForecast.forEach((weatherItem) => {
+    createWeatherCard(weatherItem);
+  });
 };
